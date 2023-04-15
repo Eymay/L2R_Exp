@@ -1,0 +1,3 @@
+[submodule "src/Multiplier"]
+	path = src/Multiplier
+	url = git@github.com:Eymay/WallaceMultiplier.git
