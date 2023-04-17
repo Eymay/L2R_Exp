@@ -19,9 +19,6 @@ Datapath's hierarchy schematic.
 ![](res/L2Rdatapath_hierarchy.png)
 
 
-Datapath's post-techmap schematic.
-![](res/L2Rdatapath_post_techmap.png)
-
 ### Simulation
 Most of the signals are shown in waveform, when simulated for a single input of A and B:
 ![](res/L2Rdatapath_tb.png)
