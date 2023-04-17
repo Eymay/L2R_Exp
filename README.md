@@ -2,9 +2,6 @@
 
 ## Control Unit
 
-### State Diagram
-![](res/L2R_fsm.jpg)
-
 ### RTL Schematic
 Controller's hierarchy schematic.
 ![](res/cu_hier.png)
