@@ -1,17 +1,18 @@
-module dff (
+module dff #(
+parameter k = 16
+) (
     input clk,
     input rst,
-    input D,
+    input [k-1:0] D,
     input En,
-    output reg Q
+    output reg [k-1:0] Q
 );
 
-always @(posedge clk ) begin
-    if(En) begin
-        if(!rst)
-            Q <= 0;
-        else
-            Q <=D;
-    end
+always @(negedge clk ) begin
+    if(!rst)
+        Q <= 0;
+    else if(En) 
+        Q <= D;
+
 end
 endmodule

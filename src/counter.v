@@ -1,20 +1,28 @@
 module counter #(
-    parameter N = 3
+    parameter k = 3
 ) (
     input rst,
     input clk,
-    output [N-1:0] out
+    input en,
+    input [k-1:0] counter_in,
+    output [k-1:0] out
 );
 
-reg [N-1:0] counter = 0;
+reg [k-1:0] counter;
 
-always @(posedge clk ) begin
-    if(!rst) begin
-        counter <= 0;
-    else  
-        counter <= counter + 1;
-    end
+always @(negedge clk ) begin
+    if(rst || !en)   
+        counter <= counter - 1;
 end
+
+always@(*) begin
+    if(!rst) 
+        counter <= 0;
+    else if(en) 
+        counter <= counter_in;
+end
+
+
 
 assign out = counter;
 

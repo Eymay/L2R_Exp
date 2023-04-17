@@ -30,7 +30,7 @@ CU control_unit(.clk(clk), .start(start),
 L2Rdatapath datapath(.clk(clk), .rst(rst),
     .A(A), .B(B), .LoadA(LoadA), .LoadCoun(LoadCoun),
     .LoadB(LoadB), .ShiftB(ShiftB), .LoadC(LoadC),
-    .S_Coun(S_Coun), .S_C(S_C), .RegC(C),
+    .S_Coun(S_Coun), .S_C(S_C), .C(C),
     .start(start), .equals(equals), .regBk(regBk));
 
 

@@ -10,14 +10,14 @@ input ShiftB,
 input LoadC,
 input S_Coun,
 input [1:0] S_C,
-output [2*k-1:0] RegC,
+output reg [k-1:0] C,
 output start,
 output equals,
 output regBk
 );
 wire [k-1:0]  N;
 reg [k-1:0] C_Input;
-wire [k-1:0] RegA, RegB, RegN;
+wire [k-1:0] RegA, RegB, RegC, RegN;
 wire  ShiftC;
 
 dff #(.k(k)) RegisterA(.clk(clk), .rst(rst),
@@ -40,6 +40,17 @@ always @(posedge clk) begin
         Counter <= CounterInput;
 end
 
+always @(*) begin
+    if(A == 0)
+        C = 0;
+
+    else if(equals)
+        C = RegC;
+    else 
+        C = 0;
+end
+
+
 
 /*
 counter #(.k($clog2(k))) Counter1(.clk(clk), .rst(rst),
@@ -56,7 +67,7 @@ always @(*) begin
     if(S_Coun)
         CounterInput <= ResultSUB1;
     else
-        CounterInput <= k + 1;
+        CounterInput <= k ;
 end
 
 wire [2*k-1:0] ResultSQUARE, ResultMUL;

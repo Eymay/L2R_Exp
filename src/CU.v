@@ -24,15 +24,16 @@ reg [7:0] control_word;
 assign {LoadA, LoadCoun, LoadB, ShiftB, LoadC, S_Coun, S_C} = control_word;
 always@(posedge clk) begin 
         case(state)
-            STEP1: 
+            STEP1: begin 
+                Done <= 0;
                 if(!start) begin
                     control_word <= 8'b00001000;
                     state <= STEP1;
-                    Done <= 0;
                 end else begin
                     control_word <= 8'b11101000;
                     state <= STEP2;
                 end
+            end
             STEP2: 
                 if(!equals) begin
                     control_word <= 8'b01001101;
